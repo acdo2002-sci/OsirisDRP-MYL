@@ -99,9 +99,16 @@ FUNCTION extracstar_000, DataSet, Modules, Backbone
 			;--- extract via aperture photometry
 			if Method eq "APER_RADIUS7" or Method eq "APER_RADIUS10" then begin
 			   image = median((*DataSet.Frames[q])[*,*,*],dimension=1) ; Create collapsed 2-d frame
-			   gaus = gauss2dfit(image[2:(sz[2]-2),2:(sz[3]-2)],A)
-			   xcen=A[4]+2.0
-			   ycen=A[5]+2.0
+			   positive_mask = image GT 1.0  ; Find positive peaks with threshold (GT 1.0)
+               image_p_masked = positive_mask * image
+               image_size = size(image_p_masked, /dimensions)
+               nx = image_size[0]
+               ny = image_size[1]
+               xx = findgen(nx)
+               yy = findgen(ny)
+               gaus = mpfit2dpeak(image_p_masked, A, xx, yy)
+			   xcen=A[4]
+			   ycen=A[5]
 			   thresh = ceil(radius/2)
 			   if ( (xcen lt thresh) or (xcen gt (sz[2]-thresh)) or (ycen lt thresh) or $
 					(ycen gt (sz[3]-thresh)) ) then begin
