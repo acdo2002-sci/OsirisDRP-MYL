@@ -109,7 +109,9 @@ FUNCTION extracstar_000, DataSet, Modules, Backbone
                gaus = mpfit2dpeak(image_p_masked, A, xx, yy)
 			   xcen=A[4]
 			   ycen=A[5]
-			   thresh = ceil(radius/2)
+               radius = round(max([A[2], A[3]])*3)*2
+               print, 'New Extract Diameter: ', radius
+               thresh = ceil(radius/2)
 			   if ( (xcen lt thresh) or (xcen gt (sz[2]-thresh)) or (ycen lt thresh) or $
 					(ycen gt (sz[3]-thresh)) ) then begin
 					  print, xcen, (sz[2]-thresh), ycen, (sz[3]-thresh)
