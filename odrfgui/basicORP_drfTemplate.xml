@@ -22,6 +22,9 @@
      Name="Glitch Identification" 
      CalibrationFile="find_file_none"
   />
+  <module Name="Clean Cosmic Rays" 
+     CalibrationFile="find_file_none"
+  />
   <module
      Name="Extract Spectra"
      CalibrationFile="find_file_most_recent"
