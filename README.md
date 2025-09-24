@@ -7,6 +7,9 @@
 * [Testing the Pipeline](#testing-the-pipeline)
 * [Citing the Pipeline](#citing-the-pipeline)
 
+## MYL modify the telluric extraction to matched our UToledo (as well as GOALS) project
+- Import the IDL ``mpfit/mpfit2dpeak.pro`` routine to determine the standard star position in the FoV.
+- Download [mpfit2dpeak.pro](https://hesperia.gsfc.nasa.gov/ssw/gen/idl/fitting/mpfit/mpfit2dpeak.pro) and put ``mpfit2dpeak.pro`` into your ``YOUR_PATH/idl/lib`` folder.
 
 ## Release Notes for v6.0.2
 **2023-07-21**
